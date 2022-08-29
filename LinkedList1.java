@@ -67,22 +67,6 @@ i.e., before the current head node and make the new node as the head.
             temp = temp.getNext();
         }
     }
-    /*
-    public void inset(int data, int before){
-        
-    }
-    public void delete(int data) {
-        
-    } 
-    
-    find(data)
-1.Take a temp reference and assign it with head node
-2.While temp is not null,
-  a.If the data at temp is equal to the data being searched for then, return temp
-  b.Else, make the next node as temp
-3.If data is not found then, return null
-    */
-    
     public Node find(int data) {
         Node temp = this.head;
         while(temp!=null) {
@@ -93,7 +77,34 @@ i.e., before the current head node and make the new node as the head.
             }
         }
         return null;
+    }    
+    public void inset(int data, int before){
+            
+            Node key = this.find(before);
+            if(key==null) 
+                System.out.println("Not found");
+            else {
+                Node node = new Node(data);
+                node.setNext(key.getNext());
+                key.setNext(node);
+                
+            }
+                
     }
+    /* 
+    public void delete(int data) {
+        
+    } 
+    */
+  /*  find(data)
+1.Take a temp reference and assign it with head node
+2.While temp is not null,
+  a.If the data at temp is equal to the data being searched for then, return temp
+  b.Else, make the next node as temp
+3.If data is not found then, return null
+    */
+    
+
 }
 class LL {
   public static void main (String[] args) {
@@ -102,12 +113,7 @@ class LL {
         list.addAtEnd(20);
         list.addAtBeginning(5);
         list.display();
-        Node f = list.find(3);
-        if(f==null) 
-            System.out.println("Not found");
-        else
-            System.out.println(f.getData());
-        
+        list.inset(15,10);
         
   }
 }
