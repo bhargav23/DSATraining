@@ -85,9 +85,13 @@ i.e., before the current head node and make the new node as the head.
                 System.out.println("Not found");
             else {
                 Node node = new Node(data);
+                //System.out.println(node.getData());
                 node.setNext(key.getNext());
                 key.setNext(node);
-                
+                //key.setNext(node.getNext());
+                //node.setNext(key);
+                if(key == this.tail)
+                    this.tail = node;
             }
                 
     }
@@ -112,8 +116,10 @@ class LL {
         list.addAtEnd(10);
         list.addAtEnd(20);
         list.addAtBeginning(5);
-        list.display();
         list.inset(15,10);
+        list.inset(2,5);
+        list.inset(2,20);
+        list.display();
         
   }
 }
