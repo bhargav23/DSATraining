@@ -95,11 +95,38 @@ i.e., before the current head node and make the new node as the head.
             }
                 
     }
-    /* 
+    
     public void delete(int data) {
-        
-    } 
-    */
+            Node key = this.find(data);
+            if(key==null) 
+                System.out.println("Not found");
+            else {
+                System.out.println("Key="+key.getData());
+                    if(key == this.head && key == this.tail) {
+                        this.head = this.tail=null;
+                    }
+                    else if(key == this.head ) {
+                        this.head = this.head.getNext();
+                        key.setNext(null);
+                    } else if(key == this.tail) {
+                        this.tail = null;
+                        key.setNext(null);
+                    } else {
+                        Node nodeBefore = null;
+                        Node temp = this.head;
+                        while(temp!=null) {
+                            if(temp.getData()==data) {
+                                nodeBefore = temp;
+                                break;
+                            }
+                            temp=temp.getNext();
+                        }
+                        nodeBefore.setNext(key.getNext());
+                    }
+                }
+            }
+    
+    
   /*  find(data)
 1.Take a temp reference and assign it with head node
 2.While temp is not null,
@@ -117,8 +144,9 @@ class LL {
         list.addAtEnd(20);
         list.addAtBeginning(5);
         list.inset(15,10);
-        list.inset(2,5);
         list.inset(2,20);
+        list.display();
+        list.delete(2);
         list.display();
         
   }
