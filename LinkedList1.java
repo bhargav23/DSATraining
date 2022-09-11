@@ -1,5 +1,3 @@
-/*package whatever //do not write package name here */
-
 import java.io.*;
 class Node {
     private int data;
@@ -95,51 +93,46 @@ i.e., before the current head node and make the new node as the head.
             }
                 
     }
-    
-    public void delete(int data) {
-            Node key = this.find(data);
-            if(key==null) 
-                System.out.println("Not found");
-            else {
-                System.out.println("Key="+key.getData());
-                    if(key == this.head && key == this.tail) {
-                        this.head = this.tail=null;
-                    }
-                    else if(key == this.head ) {
-                        this.head = this.head.getNext();
-                        key.setNext(null);
-                    } else if(key == this.tail) {
-                        this.tail = null;
-                        key.setNext(null);
-                    } else {
-                        Node nodeBefore = null;
-                        Node temp = this.head;
-                        while(temp!=null) {
-                            if(temp.getData()==data) {
-                                nodeBefore = temp;
-                                break;
-                            }
-                            temp=temp.getNext();
-                        }
-                        nodeBefore.setNext(key.getNext());
-                    }
-                }
-            }
-    
-    
-  /*  find(data)
-1.Take a temp reference and assign it with head node
-2.While temp is not null,
-  a.If the data at temp is equal to the data being searched for then, return temp
-  b.Else, make the next node as temp
-3.If data is not found then, return null
-    */
-    
 
+    public void delete(int data) {
+        System.out.println("Key = "+data);
+      Node key = this.find(data);
+      if(key==null){
+        System.out.println("key Not found");
+        return;
+      }
+      if(this.head==null){
+        System.out.println("List is empty");
+        return;
+      }
+      if(this.head==key && this.tail == key){
+        this.head=this.tail=null;
+        System.out.println("Key is head and tail also");
+        return;
+      }
+      if(key==this.head){
+            this.head=this.head.getNext();
+            key.setNext(null);
+            return;
+      }
+      Node temp = this.head;
+      Node nodeBefore = null;
+      while(temp!=null) {
+        if(temp.getNext()==key){
+          nodeBefore = temp;
+          break;
+        }
+        temp=temp.getNext();
+      }
+        nodeBefore.setNext(key.getNext());
+        if(key==this.tail)
+            this.tail = nodeBefore;
+        key.setNext(null);
+    }
 }
 class LL {
   public static void main (String[] args) {
-    LinkedList list = new LinkedList();
+        LinkedList list = new LinkedList();
         list.addAtEnd(10);
         list.addAtEnd(20);
         list.addAtBeginning(5);
@@ -148,6 +141,5 @@ class LL {
         list.display();
         list.delete(2);
         list.display();
-        
   }
 }
