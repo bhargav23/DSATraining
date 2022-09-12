@@ -62,7 +62,7 @@ i.e., before the current head node and make the new node as the head.
     public void display(){
         Node temp = this.head;
         while(temp!=null) {
-            System.out.println(temp.getData());
+            System.out.print(temp.getData()+" ");
             temp = temp.getNext();
         }
     }
@@ -140,20 +140,25 @@ i.e., before the current head node and make the new node as the head.
             System.out.println("Values not found");
             return;
         }
+        
         Node temp = this.head;
         while(temp!=null && temp.getData() != a) {
             nodeBeforeA = temp;
             temp=temp.getNext();
+            
         }
+        
         Node temp1 = this.head;
         while(temp1!=null && temp1.getData() != b) {
             nodeBeforeB = temp1;
             temp1=temp1.getNext();
         }
+        
         if(nodeBeforeA!=null) {
             nodeBeforeA.setNext(B);
         } else
             this.head = B;
+        
         if(nodeBeforeB!=null) {
             nodeBeforeB.setNext(A);
         } else
@@ -161,7 +166,7 @@ i.e., before the current head node and make the new node as the head.
         
         Node temp3 = A.getNext();
         A.setNext(B.getNext());
-        B.setNext(temp3.getNext());
+        B.setNext(temp3);
         
         
     }
@@ -177,10 +182,10 @@ class LL {
         list.addAtEnd(x);
         t=t-1;
     }
-    System.out.println("Before Swapping");
+    System.out.println("Before Swapping Values = ");
     list.display();
-    list.swapNode(2,3);
-    System.out.println("After Swapping");
+    list.swapNode(1,5);
+    System.out.println("\nAfter Swapping Values = ");
     list.display();
   }
 }
