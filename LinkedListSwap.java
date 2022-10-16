@@ -38,17 +38,7 @@ class LinkedList {
             this.tail = node;
         }
     }
-    /* 
-
-
-1. Create a new node with the data passed to the method
-
-2. If the linked list is empty, make the new node as the head and the tail node.
-
-3. If the linked list is not empty, add the new node at the beginning, 
-i.e., before the current head node and make the new node as the head.
-    
-    */
+   
     public void addAtBeginning(int data){
         Node node = new Node(data);
       if(this.head==null) {
@@ -62,7 +52,7 @@ i.e., before the current head node and make the new node as the head.
     public void display(){
         Node temp = this.head;
         while(temp!=null) {
-            System.out.print(temp.getData()+" ");
+            System.out.println(temp.getData());
             temp = temp.getNext();
         }
     }
@@ -131,7 +121,7 @@ i.e., before the current head node and make the new node as the head.
         key.setNext(null);
     }
     
-    public void swapNode(int a,int b) {
+     public void swapNode(int a,int b) {
         Node A = this.find(a);
         Node B = this.find(b);
         Node nodeBeforeA = null;
@@ -145,7 +135,6 @@ i.e., before the current head node and make the new node as the head.
         while(temp!=null && temp.getData() != a) {
             nodeBeforeA = temp;
             temp=temp.getNext();
-            
         }
         
         Node temp1 = this.head;
@@ -158,19 +147,25 @@ i.e., before the current head node and make the new node as the head.
             nodeBeforeA.setNext(B);
         } else
             this.head = B;
-        
+            
         if(nodeBeforeB!=null) {
             nodeBeforeB.setNext(A);
         } else
             this.head = A;
         
+        
+        
+        
         Node temp3 = A.getNext();
+        
         A.setNext(B.getNext());
+        
         B.setNext(temp3);
         
         
-    }
-}
+        
+    } 
+} 
 class LL {
   public static void main (String[] args) {
     int t,x;
@@ -182,10 +177,8 @@ class LL {
         list.addAtEnd(x);
         t=t-1;
     }
-    System.out.println("Before Swapping Values = ");
-    list.display();
-    list.swapNode(1,5);
-    System.out.println("\nAfter Swapping Values = ");
+    //list.display();
+    list.swapNode(4,5);
     list.display();
   }
 }
